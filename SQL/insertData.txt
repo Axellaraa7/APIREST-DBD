@@ -1,0 +1,15 @@
+INSERT INTO asesinos (name,hability,hability_description,difficulty,lore_name,lore_description,perks,date_register,img) VALUES
+
+('Trapper','Bear Trap','Begin a trial with 2 Bear Traps, with 6 additional Bear Traps randomly spawning throughout the map. 
+The Trapper can only carry 2 Bear Traps at a time. Survivors can be caught in a Bear Trap and attempt to escape or be freed by a teammate. 
+If a Survivor is healthy, being caught in a Bear Trap will put them in the injured state.',1,'Evan MacMillan','Evan MacMillan admired the way his father 
+ran the Estate. When Archie MacMillan''s mental health began disintegrating, Evan protected him from the herd who sought his fortune. No matter what his father asked, 
+Evan would do it. At least, for a time. The workers soon came to realize that the son''s cruelty ran even deeper than the father’s. They never proved that Evan led over 
+a hundred men into those dark tunnels before detonating the explosives and sealing them to their fate.','{1,2,3}',LOCALTIMESTAMP,'trapper.png'),
+
+('The Wraith','Wailing Bell','Ring the Wailing Bell to cloak, becoming invisible and losing the Terror Radius. Though The Wraith cannot attack while invisible, 
+uncloaking grants a deadly lunge capable of injuring unsuspecting Survivors. Remember – The Wraith becomes slightly easier to spot at close distance, and his Wailing Bell 
+rings out loudly while uncloaking and cloaking.',2,'Philip Ojomo','Philip Ojomo escaped Nigeria in search of a new beginning. Haunted by his past, he continued his job crushing 
+cars until a flash of red caught his eye. He opened a trunk to discover a young man, bound and gagged. Realization dawned. Body disposal. A service offered unbeknownst to him 
+by his boss, Mr. Azarov. Philip had been tricked into becoming a killer for hire, no different from the monsters back home. A phantom of vengeance awoke. He made his way toward Azarov, 
+rage echoing like a wailing bell.','{4,5,6}',LOCALTIMESTAMP,'wraith.png');

@@ -1,0 +1,29 @@
+@mixin displayFlex($justify:center, $align:center,$flow:row wrap,$gap: 0)
+  display: flex
+  justify-content: $justify
+  align-items: $align
+  flex-flow: $flow
+  @if $gap != 0
+    gap: $gap
+  
+@mixin setSize($width,$height)
+  width: $width
+  height: $height
+  
+@mixin setBorder($color)
+  border: 2px solid $color
+
+@mixin setButtonStyle($bgColor,$ltColor: "")
+  border: 2px solid $bgColor
+  background-color: $bgColor
+
+  @if $ltColor != ""
+    color: $ltColor
+
+@mixin setBackground($repeat: no-repeat,$size: cover,$position: center,$color: "")
+  background:
+    repeat: $repeat
+    size: $size
+    position: $position
+    @if $color != ""
+      color: $color

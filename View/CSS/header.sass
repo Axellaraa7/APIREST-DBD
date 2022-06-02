@@ -1,0 +1,35 @@
+@import './mixins.sass'
+
+header
+  @include displayFlex(space-around,center,row nowrap)
+  padding: 0 5rem
+  @include setBorder(black)
+  
+  
+.containerLogo
+  @include displayFlex($flow:wrap column-reverse)
+  @include setBorder(red)
+  
+.containerLogo h1
+  text-align: center
+  @include setBorder(black)
+
+.figureLogo
+  @include setSize(200px,100px)
+
+.logo
+  @include setSize(100%,100%)
+
+.navbar
+  @include setBorder(yellow)
+
+.navbar ul
+  @include displayFlex(center, center, row nowrap,1rem)
+  @include setBorder(red)
+  
+li
+  padding:1rem
+  @include setBorder(black)
+
+li a
+  color: black
