@@ -88,7 +88,6 @@ class Asesinos{
   }
 
   public function getKillerById(int $id){
-    $id -= 1;
     $this->asesinos = $this->dbObject->pgQuery($this->sqlSelect);
     $this->asesinoInfo = (array_key_exists($id,$this->asesinos)) ? 
       json_encode($this->asesinos[$id]) : 

@@ -19,8 +19,8 @@
   }
 
   function limpiarDato($datoPost,$numeric = false){
+    if($numeric) return (is_numeric($datoPost)) ? $datoPost : false;
     $dato = htmlspecialchars(pg_escape_string(trim(ucfirst($datoPost))),ENT_QUOTES);
-    if($numeric) if(!is_numeric($dato)) return false;
     return $dato;
   }
 
@@ -39,10 +39,11 @@
         return;
       }else if(isset($_GET["id"])){
         $id = limpiarDato($_GET["id"],true);
-        if(!$id){
+        if($id === false){
           echo setErrorMessage("Ocurrió un error con el ID");
           return;
         }
+        $id = $_GET["id"];
         $asesinos = new Asesinos();
         $banGet = $asesinos->getKillerById($id);
         $asesino = ($banGet) ? $asesinos->getAsesinoInfo() : setErrorMessage("Ocurrió un error con el ID");
