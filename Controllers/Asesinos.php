@@ -77,7 +77,6 @@ class Asesinos{
 
   //GET BY ID
   public function getKillerByName(String $name){
-    $name = htmlspecialchars(pg_escape_string(trim(ucfirst($name))),ENT_QUOTES);
     $this->asesinos = $this->dbObject->pgQuery($this->sqlSelect);
     foreach($this->asesinos as $value){
       if($value["name"] === $name){
@@ -85,11 +84,16 @@ class Asesinos{
         break;
       }
     }
-    return true;
+    return (isset($this->asesinoInfo)) ? true : false;
   }
 
   public function getKillerById(int $id){
-
+    $id -= 1;
+    $this->asesinos = $this->dbObject->pgQuery($this->sqlSelect);
+    $this->asesinoInfo = (array_key_exists($id,$this->asesinos)) ? 
+      json_encode($this->asesinos[$id]) : 
+      null;
+    return (isset($this->asesinoInfo)) ? true : false;
   }
 
   //POST

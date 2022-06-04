@@ -14,20 +14,47 @@
   include_once ROOT.CLASES."/Autoloader.php";
   Autoloader::loader();
 
+  function limpiarDatos($Post){
+
+  }
+
+  function limpiarDato($datoPost,$numeric = false){
+    $dato = htmlspecialchars(pg_escape_string(trim(ucfirst($datoPost))),ENT_QUOTES);
+    if($numeric) if(!is_numeric($dato)) return false;
+    return $dato;
+  }
+
+  function setErrorMessage($error){
+    return json_encode(array("msgError" => $error , "statusError" => 404));
+  }
+
   switch($_SERVER["REQUEST_METHOD"]){
     case "GET":
       if(isset($_GET["name"])){
+        $name = limpiarDato($_GET["name"]);
         $asesinos = new Asesinos();
-        $banGet = $asesinos->getKillerByName($_GET["name"]);
-        $asesino = ($banGet) ? $asesinos->getAsesinoInfo() : "";
+        $banGet = $asesinos->getKillerByName($name);
+        $asesino = ($banGet) ? $asesinos->getAsesinoInfo() : setErrorMessage("Ocurrió un error en el nombre");
+        echo $asesino;
+        return;
+      }else if(isset($_GET["id"])){
+        $id = limpiarDato($_GET["id"],true);
+        if(!$id){
+          echo setErrorMessage("Ocurrió un error con el ID");
+          return;
+        }
+        $asesinos = new Asesinos();
+        $banGet = $asesinos->getKillerById($id);
+        $asesino = ($banGet) ? $asesinos->getAsesinoInfo() : setErrorMessage("Ocurrió un error con el ID");
         echo $asesino;
         return;
       } 
+
       $asesinos = new Asesinos();
       $banGet = $asesinos->getKillers();
       $listaAsesino = ($banGet) ? $asesinos->getAsesinos() : "";
-      echo $listaAsesino;
-    break;
+      echo $listaAsesino;  
+      break;
 
     case "POST":
       //file_get_contents("php://input")->json_decode->json_encode
