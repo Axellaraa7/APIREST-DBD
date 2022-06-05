@@ -16,7 +16,6 @@ function inicio(){
       HTTPGet(d.getElementById("cards"),apiKillers);
     break;
     case "register.php":
-      console.log("register");
       getApiDatasToSelect(d.getElementById("difficulty"),apiDifficulties);
       //getPerks();
       HTTPPost(d.getElementById("form"),apiKillers);

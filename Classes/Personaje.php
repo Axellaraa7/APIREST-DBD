@@ -1,6 +1,6 @@
 <?php 
 abstract class Personaje{
-  private $id, $name, $loreDescription, $perks, $img;
+  protected $id, $name, $loreDescription, $perks, $img;
 
   public function setId($setter){
     if(isset($setter)){
@@ -28,7 +28,7 @@ abstract class Personaje{
 
   public function setPerks($setter){
     if(isset($setter)){
-      $this->perks = $setter;
+      $this->perks = "{".$setter."}";
       return true;
     }
     return false;
@@ -52,11 +52,10 @@ abstract class Personaje{
 
   public function getImg(){ return $this->img; }
 
-  public function __construct($id,$name,$loreDescription,$perks,$img){
-    $this->id = $id;
+  public function __construct($name,$loreDescription,$perks,$img){
     $this->name = $name;
     $this->loreDescription = $loreDescription;
-    $this->perks = $perks;
+    $this->perks = "{".$perks."}";
     $this->img = $img;    
   }
 

@@ -1,8 +1,10 @@
-@import "./mixins.sass"
+@import "./mixins"
+@import "./utils"
+@import "./header"
 
 main
   @include displayFlex(center,center,row wrap)
-  @include setBorder(blue)
+  // @include setBorder(blue)
   
 #cards
   flex-basis: 100%
@@ -10,7 +12,7 @@ main
   @include displayFlex(space-around,center ,row wrap,1rem)
   padding:1rem
 
-  @include setBorder(greenyellow)
+  // @include setBorder(greenyellow)
 
 .card
   flex:0 1 450px
@@ -46,4 +48,4 @@ span,a
 a:hover
   color: hsla(var(--main),50%,var(--alpha))
 
-
+@import './footer'

@@ -40,11 +40,28 @@ class DB{
     }
   }
 
-  public function pgPrepare($query,$array){
+  public function pgPrepare($query,$array,$crud){
     try{
       $prepare = pg_prepare($this->db,"pg_prepare",$query);
       $results = pg_execute($this->db,"pg_prepare",$array);
-      return ($results) ? pg_fetch_row($results) : array();
+      switch($crud){
+        case 0:
+          $data = ($results) ? pg_fetch_all($results) : array();
+          break;
+        case 1:
+          $data = $results;
+          break;
+        case 2:
+          $data = $results;
+          break;
+        case 3:
+          $data = $results;
+          break;
+        default:
+          $data = true;
+          break;
+      }
+      return $data;
     }catch(Exception $e){
       echo $e->getMessage();
       return false;

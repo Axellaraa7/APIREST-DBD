@@ -4,20 +4,20 @@ export function HTTPGet(dElement,url){
   const cards = dElement;
 
   fetch(url,{
-    method : "GET"
-  }).then(
-    response => response.json()
-  ).then(data => {
+    method : "GET" })
+  .then(
+    response => response.json())
+  .then(data => {
     const fragment = d.createDocumentFragment();
     data.forEach(killer => {
-      let div = document.createElement("div");
+      let div = d.createElement("div");
       div.classList.add("card");
       div.style.backgroundImage = "url('"+killer.img+"')";
       
-      let divInformation = document.createElement("div");
+      let divInformation = d.createElement("div");
       divInformation.classList.add("information");
 
-      let bodydivInformation = "<span>"+killer.name+"</span><a href='killer/name="+killer.name+"' class='fa-solid fa-angles-right'></a>"
+      let bodydivInformation = "<span>"+killer.name+"</span><a href='killer.php?name="+killer.name+"' class='fa-solid fa-angles-right'></a>"
 
       divInformation.innerHTML = bodydivInformation;
       div.appendChild(divInformation);
@@ -31,31 +31,33 @@ export function HTTPGet(dElement,url){
 
 export function HTTPPost(dElement,url){
   const form = dElement;
-
   form.addEventListener("submit",(e)=>{
     e.preventDefault();
-    console.info("FETCHING DATA TO ... "+url);
     const formData = new FormData(form);
-    /* let obj = {};
-    formData.forEach((v,k) =>{
-      if(k == "img"){
-        sendImg();
-      }else{
-        obj[k] = v;
-      }
-    }); */
     fetch(url,{
       method:"POST",
-      body: formData
-    }).then(response=>response.json())
-    .then(data => console.log(data))
+      body: formData })
+    .then(response => response.json())
+    .then(data => {
+      if(data.msg.status === 200) {
+        form.reset();
+        console.log(data);
+      }else throw {status: data.msg.status, msg: data.msg.msg }; })
     .catch(error => console.error("ERROR: ",error));
   },false);
 }
 
+export function HTTPPut(dElement,url){
+
+}
+
+export function HTTPDelete(dElement,url){
+
+}
+
 /* function sendImg(){
   const formData = new FormData();
-  formData.append("img",document.getElementById("img").files[0]);
+  formData.append("img",d.getElementById("img").files[0]);
   formData.append("ban",true);
   console.log(formData.get("img"));
   fetch(apiKillers,{
@@ -74,3 +76,12 @@ export function HTTPPost(dElement,url){
   }; 
   obj[k] = v;
 */
+
+/* let obj = {};
+    formData.forEach((v,k) =>{
+      if(k == "img"){
+        sendImg();
+      }else{
+        obj[k] = v;
+      }
+    }); */

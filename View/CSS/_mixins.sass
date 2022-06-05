@@ -20,10 +20,15 @@
   @if $ltColor != ""
     color: $ltColor
 
-@mixin setBackground($repeat: no-repeat,$size: cover,$position: center,$color: "")
+@mixin setBackground($repeat: no-repeat,$size: cover,$position: center,$color: "",$url: "")
   background:
     repeat: $repeat
     size: $size
     position: $position
     @if $color != ""
       color: $color
+    @if $url != ""
+      image: $url
+
+@mixin setTransition($transitions...)
+  transition: $transitions

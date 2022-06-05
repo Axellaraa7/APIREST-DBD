@@ -11,7 +11,7 @@ class Asesinos{
   private $asesinos;
   private $message;
 
-  private $sqlSelect = "SELECT * FROM ".ASESINOS;
+  private $sqlSelect = "SELECT name,hability,hability_description,difficulty,lore_name,lore_description,perks,img FROM ".ASESINOS;
   private $sqlInsert = "INSERT INTO ".ASESINOS." (name,hability,hability_description,difficulty,lore_name,lore_description,perks,date_register,img) VALUES ($1,$2,$3,$4,$5,$6,$7,LOCALTIMESTAMP,$8);";
   /* private $sqlDelete = "DELETE FROM ".ASESINOS." WHERE ";
   private $sqlUpdate = "UPDATE ".ASESINOS; */
@@ -38,7 +38,7 @@ class Asesinos{
     }else return false;
   }
 
-  public function setMessage($settet){
+  public function setMessage($setter){
     if(isset($setter)){
       $this->message = $setter;
       return true;
@@ -64,7 +64,7 @@ class Asesinos{
     $this->asesinos = $this->dbObject->pgQuery($this->sqlSelect);
     if(empty($this->asesinos)) return false;
     foreach($this->asesinos as $index=>$asesino){
-      $rootImg = "http://localhost/DBD-API".ASSETS.IMG."/".$asesino["img"];
+      $rootImg = LOCALHOST.ASSETS.IMG."/".$asesino["img"];
       $this->asesinos[$index]["img"] = $rootImg;
     }
     /* for($i = 0; $i< count($this->asesinos) ; $i++){
@@ -89,22 +89,17 @@ class Asesinos{
 
   public function getKillerById(int $id){
     $this->asesinos = $this->dbObject->pgQuery($this->sqlSelect);
-    $this->asesinoInfo = (array_key_exists($id,$this->asesinos)) ? 
-      json_encode($this->asesinos[$id]) : 
-      null;
+    $this->asesinoInfo = (array_key_exists($id,$this->asesinos)) 
+    ? json_encode($this->asesinos[$id]) 
+    : null;
     return (isset($this->asesinoInfo)) ? true : false;
   }
 
   //POST
   public function postKiller(){
-    // try{
-    //   $prepare = pg_prepare($this->db,"post_query",$this->sqlInsert);
-    //   $result = pg_execute($this->db,"post_query",$this->asesino->getInArray());
-    //   return ($result) ? true : false;
-    // }catch(Exception $e){
-    //   echo "Excepcion: ".$e->getMessage()."<br>";
-    //   return false;
-    // }
+    $banInsert = $this->dbObject->pgPrepare($this->sqlInsert,$this->asesino->getInArray(),1);
+    return ($banInsert !== false) ? true : false;
+    // return 0;
   }
 
   

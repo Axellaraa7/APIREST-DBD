@@ -58,8 +58,8 @@ class Asesino extends Personaje{
 
   public function __construct0(){  }
 
-  public function __construct9($id,$name,$loreDescription,$perks,$img,$hability,$habilityDescription,$difficulty,$loreName){
-    parent::__construct($id,$name,$loreDescription,$perks,$img);
+  public function __construct8($name,$loreDescription,$perks,$img,$hability,$habilityDescription,$difficulty,$loreName){
+    parent::__construct($name,$loreDescription,$perks,$img);
     $this->hability = $hability;
     $this->habilityDescription = $habilityDescription;
     $this->difficulty = $difficulty;
@@ -68,6 +68,19 @@ class Asesino extends Personaje{
 
   public function getInArray(){
     return array($this->name,$this->hability,$this->habilityDescription,$this->difficulty,$this->loreName,$this->loreDescription,$this->perks,$this->img);
+  }
+
+  public function getInAssociativeArray(){
+    return array(
+      "name" => $this->name,
+      "hability" => $this->hability, 
+      "habilityDescription" => $this->habilityDescription, 
+      "difficulty" => $this->difficulty, 
+      "loreName" => $this->loreName, 
+      "loreDescription" => $this->loreDescription, 
+      "perks" => $this->perks, 
+      "img" => $this->img
+    );
   }
 }
 

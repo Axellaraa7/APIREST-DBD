@@ -1,6 +1,7 @@
 <?php 
 //PATHS
 define("ROOT",$_SERVER["DOCUMENT_ROOT"]."/DBD-API");
+define("LOCALHOST","http://localhost/DBD-API");
 define("CLASES","/Classes");
 define("CONTROLLERS","/Controllers");
 define("API","/API");

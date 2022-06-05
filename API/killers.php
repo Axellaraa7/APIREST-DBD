@@ -14,18 +14,22 @@
   include_once ROOT.CLASES."/Autoloader.php";
   Autoloader::loader();
 
-  function limpiarDatos($Post){
-
+  function limpiarDatos($array){
+    foreach($array as $key => $value){
+      $datos[$key] = limpiarDato($value);
+    }
+    return $datos;
   }
 
   function limpiarDato($datoPost,$numeric = false){
     if($numeric) return (is_numeric($datoPost)) ? $datoPost : false;
-    $dato = htmlspecialchars(pg_escape_string(trim(ucfirst($datoPost))),ENT_QUOTES);
+    //$dato = htmlspecialchars(pg_escape_string(trim(ucfirst($datoPost))),ENT_QUOTES);
+    $dato = pg_escape_string(trim(ucfirst($datoPost)));
     return $dato;
   }
 
-  function setErrorMessage($error){
-    return json_encode(array("msgError" => $error , "statusError" => 404));
+  function setMessageResponse($message,$status){
+    return json_encode(array("msg" => $message , "status" => $status));
   }
 
   switch($_SERVER["REQUEST_METHOD"]){
@@ -34,91 +38,73 @@
         $name = limpiarDato($_GET["name"]);
         $asesinos = new Asesinos();
         $banGet = $asesinos->getKillerByName($name);
-        $asesino = ($banGet) ? $asesinos->getAsesinoInfo() : setErrorMessage("Ocurrió un error en el nombre");
+        $asesino = ($banGet) ? $asesinos->getAsesinoInfo() : setMessageResponse("Ocurrió un error en el nombre",404);
         echo $asesino;
         return;
       }else if(isset($_GET["id"])){
         $id = limpiarDato($_GET["id"],true);
         if($id === false){
-          echo setErrorMessage("Ocurrió un error con el ID");
+          echo setMessageResponse("Ocurrió un error con el ID",404);
           return;
         }
         $id = $_GET["id"];
         $asesinos = new Asesinos();
         $banGet = $asesinos->getKillerById($id);
-        $asesino = ($banGet) ? $asesinos->getAsesinoInfo() : setErrorMessage("Ocurrió un error con el ID");
+        $asesino = ($banGet) ? $asesinos->getAsesinoInfo() : setMessageResponse("Ocurrió un error con el ID",404);
         echo $asesino;
         return;
       } 
 
       $asesinos = new Asesinos();
       $banGet = $asesinos->getKillers();
-      $listaAsesino = ($banGet) ? $asesinos->getAsesinos() : "";
+      $listaAsesino = ($banGet) ? $asesinos->getAsesinos() : setMessageResponse("Ocurrio un error al consultar la lista",404);
       echo $listaAsesino;  
       break;
 
     case "POST":
+      //PRUEBA POST
+      // $resultados["post"] = $_POST;
+      // $resultados["file"] = $_FILES;
+      // $resultados["msg"] = array("status" => 200);
+      // echo json_encode($resultados);
       //file_get_contents("php://input")->json_decode->json_encode
-      $asesino = new Asesino();
+
+      if(!isset($_FILES) || !isset($_POST)){
+        $resultados["msg"] = json_decode(setMessageResponse("No se encontró la información",404));
+        echo json_encode($resultados);
+      }
+
+      $datos = limpiarDatos($_POST);
+      $dataImg = $_FILES;
+      $urlImg = ROOT.ASSETS.IMG."/";
+      move_uploaded_file($dataImg["img"]["tmp_name"], $urlImg.$dataImg["img"]["name"]);
+
+      $asesino = new Asesino(
+        $datos["name"],
+        $datos["lore"],
+        $datos["perks"],
+        $dataImg["img"]["name"],
+        $datos["hability"],
+        $datos["habilityDescription"],
+        $datos["difficulty"],
+        $datos["loreName"]
+      );
+      
       $asesinos = new Asesinos();
-      $banSetters = array();
-
-      $resultados["post"] = json_encode($_POST);
-      $resultados["file"] = json_encode($_FILES);
+      $asesinos->setAsesino($asesino);
+      $banPost = $asesinos->postKiller();
+      // $resultados["msg"] = array("status" => 200);
+      // $resultados["datos"] = $asesino->getInAssociativeArray();
+      $resultados["msg"] = ($banPost) ? 
+      setMessageResponse("Asesino Insertado con éxito", 200) :
+      setMessageResponse("Ocurrió un error en la inserción", 404);
+      $resultados["msg"] = json_decode($resultados["msg"]);
       echo json_encode($resultados);
-
-      //RECIBIMOS IMG
-      /* if(isset($_FILES)){
-        move_uploaded_file($_FILES["img"]["tmp_name"], ROOT.ASSETS.IMG."/".$_FILES["img"]["name"]);
-        $resultado["img"] = json_encode($_POST);
-        echo json_encode($resultado);
-      } */
-      //RECIBIR JSON
-
-     /*  if(count($_POST) > 0){
-        
-      } */
-
-      /* $_POST = json_decode(file_get_contents("php://input"),true); */
-
       
-      /* $name = $_POST["name"];
-      $hability = $_POST["hability"];
-      $habilityD = $_POST["habilityDescription"];
-      $loreName = $_POST["loreName"];
-      $lore = $_POST["lore"];
-      $difficulty = $_POST["difficulty"];
-      $perks = $_POST["perks"];
-      $img = $_FILES["img"]["name"]; */
-
-      /* $resultado["mensaje"] = json_encode($_POST);
-      echo json_encode($resultado); */
-
-      /*  */
-      
-      //Crear objeto Asesino
-      /* $banSetters [] = $asesino->setName($_POST["name"]);
-      $banSetters [] = $asesino->setHability($_POST["hability"]);
-      $banSetters [] = $asesino->setHabilityDescription($_POST["habilityDescription"]);
-      $banSetters [] = $asesino->setDifficulty($_POST["difficulty"]);
-      $banSetters [] = $asesino->setLoreName($_POST["loreName"]);
-      $banSetters [] = $asesino->setLoreDescription($_POST["loreDescription"]);
-      $banSetters [] = $asesino->setPerks($_POST["perks"]);
-      $banSetters [] = $asesino->setImg($_POST["img"]); */
-
-      //Seteamos el controlador
-     /*  $banSetters [] = $asesinos->setAsesino($asesino);
-      $banPost = (in_array(false,$banSetters)) ? false : $asesinos->postKiller(); */
-
-      /* $resultado["mensaje"] = ($banPost) ? $asesino->getName()." uploaded." :  $asesino->getName()." no uploaded.";
-      echo json_encode($resultado); */
-
-     /*  $asesinos->closeConnection(); */
-
-      //RECIBIR TEXTO PLANO
-      /* $_POST["msj"] = file_get_contents("php://input");
-      $resultado = $_SERVER["REQUEST_METHOD"]." MENSAJE ENVIADO ".$_POST["msj"];
-      echo $resultado; */
-    break;
+      break;
   }
+ //RECIBIR TEXTO PLANO
+/* $_POST["msj"] = file_get_contents("php://input");
+$resultado = $_SERVER["REQUEST_METHOD"]." MENSAJE ENVIADO ".$_POST["msj"];
+echo $resultado; */
 ?>

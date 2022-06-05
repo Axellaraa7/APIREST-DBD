@@ -1,0 +1,107 @@
+@import './mixins'
+
+form
+  flex: 1 1 100%
+  @include displayFlex(center, center, column nowrap,2rem)
+  padding:3rem 6rem
+  @include setBackground($url: url("./../../../Assets/IMG/dbd_wallpaper2.jpg"))
+
+.titleContainer
+  flex: 1 1 100%
+  text-align: center
+  
+h2
+  text-align: center
+  color: var(--white)
+  text-transform: uppercase
+
+.formElement
+  position: relative
+  width: 70rem
+
+.feSelect,.feFile
+  @include displayFlex(space-between,center)
+  padding: 1.5rem
+  font-size: 1.6rem
+  border: none
+  background-color: var(--white)
+  border-radius: .5rem
+  box-shadow: 0px 2px 3px 2px var(--placeholders)
+
+
+.feButtons
+  @include displayFlex($justify: flex-end,$align: center,$gap: 2rem)
+
+label,span
+  margin: 0 .5rem
+  font-size: 1.6rem
+  color: var(--mainColor)
+  text-transform: uppercase
+
+.ph
+  position: absolute 
+  right: calc(100% - 2.5rem)
+  top: 1.5rem
+  width: 0px
+  white-space: nowrap
+  text-align: right
+  font-weight: bold
+  @include setTransition(all .25s linear)
+  //transition: all .25s linear
+
+
+input[type="text"],textarea
+  width: 100%
+  padding: 1.5rem 2.5rem
+
+  font-size: 1.6rem
+  border-radius: .5rem
+  color: var(--white)
+
+  border: none
+  background-color: var(--white)
+  box-shadow: 0px 2px 3px 2px var(--placeholders)
+  resize: none
+  @include setTransition(all .25s linear)
+
+
+select,input[type="file"]
+  flex: 0 1 40rem
+
+  padding: .5rem
+
+  font-size: 1.6rem
+  color: var(--white)
+
+  background: var(--mainColor)
+  border-radius: .5rem
+
+  cursor: pointer
+
+.selectPerk
+  width: 12rem
+  margin-left: 2rem
+
+option
+  font-size: 1.6rem
+
+input[type="text"]:focus, textarea:focus
+  outline: 2px solid var(--mainColor)
+  background-color: var(--mainColor)
+  box-shadow: none
+
+input[type="text"]:focus+label.ph, textarea:focus+label.ph
+  right: 105%
+  width: 200px
+  color: var(--white)
+
+input[type="text"]:focus+label span, textarea:focus+label span
+  color: var(--white)
+
+input[type=file]::file-selector-button
+  @include setBorder(var(--white))
+  background-color: var(--mainColor)
+  color: white
+  border-radius: .5rem
+
+
