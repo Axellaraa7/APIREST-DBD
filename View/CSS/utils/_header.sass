@@ -1,0 +1,59 @@
+@import './_mixins'
+
+header
+  @include setBounds(100%, 90vh)
+  @include setBackground($position: center, $color: var(--mainColor),$url: url("./../../../Assets/IMG/dbd_wallpaper.jpg"))
+  position: relative
+
+.gameDesc
+  @include displayFlex($align: stretch,$flow: column nowrap,$gap: 2rem)
+  @include setBounds(100%,100%)
+
+.titleWhite
+  font:
+    size: 10vh
+  text:
+    align: center
+  color: var(--white)
+
+.gameDesc>div
+  @include displayFlex($align: stretch, $gap: 1rem)
+
+.col
+  flex: 1 1 40vw
+  padding: 1rem 3rem
+  color: var(--white)
+  text:
+    align: center
+
+.col h2
+  font:
+    size: 5.5vh
+
+.col p
+  font:
+    size: 2.25vh
+
+.gameDesc a
+  align-self: center
+
+.navbar
+  @include displayFlex($justify: space-between)
+  position: absolute
+  top: 1vh
+  left: 5vw
+  right: 5vw
+  
+.navbar figure
+  top: 2vh
+  left: 10vw
+  @include setBounds(250px,150px) 
+
+.logo
+  @include setBounds(100%,100%)
+  // filter: contrast(200%)
+  filter: invert(85%)
+
+.navbar ul
+  @include displayFlex(center, center, row nowrap, 2rem)
+

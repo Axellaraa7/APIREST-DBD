@@ -1,29 +1,25 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>DEAD BY DAYLIGHT</title>
-  <link rel="stylesheet" href="./CSS/dist/index.css">
-  <link rel="stylesheet" href="./CSS/dist/register.css">
-  <link rel="stylesheet" href="./CSS/dist/delete.css">
-  <link rel="shortcut icon" href="./../Assets/IMG/logoIcon.ico" type="image/x-icon">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"/>
-
-  <script src="./JS/index.js" type="module" defer></script>
-</head>
-<body>
-  <header>
-    <div class="containerLogo">
-      <h1>DEAD BY DAYLIGHT</h1>
-      <figure class="figureLogo">
-        <img src="https://us.v-cdn.net/6030815/uploads/editor/us/apbwthui3273.gif" class="logo" alt="logodbd">
-      </figure>
+<header id="header">
+  <section class="gameDesc">
+    <h1 class="titleWhite">DEAD BY DAYLIGHT</h1>
+    <div>
+      <div class="col">
+        <h2>Asesinos</h2>
+        <p>Tu objetivo es cazar a los supervivientes y evitar que escapen por la puerta de salida ¿aguantarás la presión? </p>
+      </div>
+      <div class="col">
+        <h2>Supervivientes</h2>
+        <p>Tu objetivo es reparar 5 generadores, abrir la puerta de salida y evitar que el asesino de destruya ¿podrás escapar? </p>
+      </div>
     </div>
-    
-    
-    <nav class="navbar">
+    <a href="https://deadbydaylight.com/" target="_blank" class="btn btnMain">SABER MÁS
+    </a>
+  </section>
+
+  <section class="navbar">
+    <figure>
+      <img src="https://us.v-cdn.net/6030815/uploads/editor/us/apbwthui3273.gif" class="logo" alt="logodbd">
+    </figure>
+    <nav>
       <ul>
         <li><a href="" class="btn btnNav">HOME</a></li>
         <li><a href="" class="btn btnNav">KILLERS</a></li>
@@ -31,4 +27,6 @@
         <li><a href="" class="btn btnNav">PERKS</a></li>
       </ul>
     </nav>
-  </header>
+  </section>
+
+</header>

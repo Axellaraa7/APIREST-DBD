@@ -1,0 +1,72 @@
+@import "./mixins.sass"
+@import url('https://fonts.googleapis.com/css2?family=Special+Elite&display=swap')
+
+*
+  font:
+    size:.625rem
+    family: "Special Elite", cursive
+  box-sizing: border-box
+  margin:0
+  padding:0
+
+  list-style: none
+  text-decoration: none
+
+:root
+  --alpha:1
+  --main: 0,98%
+  --mainL: 28%
+  --secondary: 291,28%
+  --secondaryL:29%
+  --third: 45,32%
+  --thirdL:77%
+  --mainColor: hsla(var(--main),var(--mainL),var(--alpha))
+  --secondaryColor: hsla(var(--secondary),var(--secondaryL),var(--alpha))
+  --thirdColor: hsla(var(--third),var(--thirdL),var(--alpha))
+
+  --placeholders:rgb(119,119,119)
+  --black: #323232
+  --white: #eeefff
+
+h1
+  font-size: 2.8rem
+
+h2
+  font-size: 2.6rem
+
+h3
+  font-size: 2.4rem
+
+.btn
+  display: block
+  padding: 1.5rem 4.5rem
+  font:
+    size: 2rem
+  border:
+    style: none
+    radius: 25px
+  cursor: pointer
+  @include setTransition(all .15s ease-in 0s)
+  &:hover
+    @include setTransform(scale(1.1))
+
+.btnMain
+  @include setButtonStyle(var(--mainColor),var(--white))
+  &:hover
+    @include setButtonStyle(hsla(var(--main),34%,var(--alpha)),var(--white))
+
+.btnSecondary
+  @include setButtonStyle(var(--secondaryColor),var(--white))
+  &:hover
+    @include setButtonStyle(hsla(var(--secondary),34%,var(--alpha)),var(--white))
+
+.btnThird
+  @include setButtonStyle(var(--thirdColor),var(--black))
+  &:hover
+    @include setButtonStyle(hsla(var(--third),65%,var(--alpha)),var(--black))
+
+.btnNav
+  @include setButtonStyle(hsla(0,0%,10%,.5),var(--white))
+  &:hover
+    @include setButtonStyle(hsla(0,0%,90%,.5),var(--mainColor))
+

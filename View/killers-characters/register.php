@@ -1,5 +1,5 @@
 <?php
-require_once "header.php";
+require_once "./../header.php";
 ?>
 <main>
   <form id="form">
@@ -80,5 +80,5 @@ require_once "header.php";
 </main>
 
 <?php
-require_once "footer.php";
+require_once "./../footer.php";
 ?>

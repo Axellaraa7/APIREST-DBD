@@ -1,6 +1,6 @@
-@import "./mixins"
-@import "./utils"
-@import "./header"
+@import "./utils/mixins"
+@import "./utils/utils"
+@import "./utils/header"
 
 main
   @include displayFlex(center,center,row wrap)
@@ -23,9 +23,9 @@ main
   box-shadow: 3px 3px 5px 2px var(--placeholders)
   border-radius: 2rem
 
-.information
+.information 
   @include displayFlex(space-between,center,row nowrap)
-  @include setSize(100%,0%)
+  @include setBounds(100%,0%)
 
   background-color: var(--secondaryColor)
   border-radius: inherit
@@ -48,4 +48,4 @@ span,a
 a:hover
   color: hsla(var(--main),50%,var(--alpha))
 
-@import './footer'
+@import './utils/footer'

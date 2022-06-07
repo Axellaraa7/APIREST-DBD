@@ -9,23 +9,26 @@ apiPerks = "http://127.0.0.1/DBD-API/API/perks.php";
 w.addEventListener("load",inicio,false);
 
 function inicio(){
-  let currentUrl = window.location.pathname.split('/').pop();
-  switch(currentUrl){
-    case "index.php":
-    case "": 
-      HTTPGet(d.getElementById("cards"),apiKillers);
-    break;
-    case "register.php":
-      getApiDatasToSelect(d.getElementById("difficulty"),apiDifficulties);
-      //getPerks();
-      HTTPPost(d.getElementById("form"),apiKillers);
-    break;
-    case "tets.php":
-      d.querySelector("button").addEventListener("click",()=>{
-        fetch(apiDifficulties).then(response => response.json()).then(data => console.log(data));
-      });
-    break;
-  }
+  let currentUrl = location.pathname.split("/").pop(),
+  folder = location.pathname.split("/").pop();
+  console.log(currentUrl,folder,location.pathname);
+  // switch(currentUrl){
+  //   case "index.php":
+  //     HTTPGet(d.getElementById("cards"),apiKillers);
+  //   case "killers.php": 
+  //     HTTPGet(d.getElementById("cards"),apiKillers);
+  //   break;
+  //   case "register.php":
+  //     getApiDatasToSelect(d.getElementById("difficulty"),apiDifficulties);
+  //     //getPerks();
+  //     HTTPPost(d.getElementById("form"),apiKillers);
+  //   break;
+  //   case "tets.php":
+  //     d.querySelector("button").addEventListener("click",()=>{
+  //       fetch(apiDifficulties).then(response => response.json()).then(data => console.log(data));
+  //     });
+  //   break;
+  // }
 }
 
 
