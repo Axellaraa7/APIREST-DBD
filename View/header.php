@@ -29,4 +29,22 @@
     </nav>
   </section>
 
+  <section class="platforms">
+    <figure>
+      <img src="./../Assets/ICONS/SVG/steam.svg" alt="logoSteam">
+    </figure>
+    <figure>
+      <img src="./../Assets/ICONS/SVG/stadia.svg" alt="logoStadia">
+    </figure>
+    <figure>
+      <img src="./../Assets/ICONS/SVG/microsoft.svg" alt="logoMicrosoft">
+    </figure>
+    <figure>
+      <img src="./../Assets/ICONS/SVG/ps.svg" alt="logoPlayStation">
+    </figure>
+    <figure>
+      <img src="./../Assets/ICONS/SVG/xbox.svg" alt="logoXbox">
+    </figure>
+  </section>
+
 </header>

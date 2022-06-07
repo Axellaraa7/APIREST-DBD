@@ -10,8 +10,13 @@
   width: $width
   height: $height
   
-@mixin setBorder($color)
-  border: 2px solid $color
+@mixin setBorder($color, $radius: '')
+  border: 
+    style: solid
+    width: 2px
+    color: $color
+    @if $radius != ''
+      radius: $radius
 
 @mixin setButtonStyle($bgColor,$ltColor: "")
   border: 2px solid $bgColor
@@ -34,5 +39,5 @@
   transition: $transitions
 
 @mixin setTransform($transforms...)
-  @each $transform in $transforms
-    transform: $transform
+  transform: join($transforms, null, space)
+  //join($list1,$list2,$separator,$bracketed)

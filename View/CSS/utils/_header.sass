@@ -1,4 +1,4 @@
-@import './_mixins'
+@import './mixins'
 
 header
   @include setBounds(100%, 90vh)
@@ -57,3 +57,32 @@ header
 .navbar ul
   @include displayFlex(center, center, row nowrap, 2rem)
 
+.platforms
+  @include displayFlex($justify: space-around, $gap: 1rem)
+  position: absolute
+  top:100%
+  right:50%
+  min-width:540px
+  max-width:960px
+  padding:3rem
+  @include setTransform(translateX(50%), translateY(-50%))
+  @include setBorder(var(--placeholders),3rem)
+  box-shadow: 4px 0px 12px 4px var(--placeholders)
+
+.platforms figure
+  @include setBounds(160px,160px)
+  padding: 3rem
+  margin: 0 2rem
+  @include setBackground($color: var(--thirdColor))
+  @include setBorder(var(--black), 50%)
+  box-shadow: 1rem 1rem 2rem 1rem var(--black)
+
+    
+.platforms figure img
+  @include setBounds(100%,100%)
+
+@media screen and (max-height:720px), screen and (max-width:1440px)
+  .platforms figure
+    @include setBounds(144px,144px)
+
+  //1920, 1760, 1600, 1440, 1280, 1120, 960, 700, 540

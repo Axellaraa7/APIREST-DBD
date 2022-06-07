@@ -1,12 +1,10 @@
 <?php
-  require_once "./../header.php";
+  require './../head.php';
 ?>
-
   <main>
     <section id = "cards">
     </section>
   </main>
   
 <?php
-  require_once "./../footer.php";
 ?>
