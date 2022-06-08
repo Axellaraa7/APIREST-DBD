@@ -1,0 +1,44 @@
+@import "./utils/mixins", "./utils/utils", "./utils/nav"
+
+main
+  height: 100vh
+  @include setBackground($url: url("./../../../Assets/IMG/bgLogin.jpg"))
+
+#login
+  @include displayFlex($flow: column nowrap, $gap: 4rem)
+  padding: 5rem 0
+
+#login div
+  position: relative
+  @include displayFlex($flow: column nowrap, $gap: 1rem)
+  &:focus-within label
+    top: 0
+    color: var(--white)
+  &:focus-within input
+    color: var(--white)
+    outline: 2px solid var(--mainColor)
+
+label
+  position: absolute
+  top: 90%
+  left: 1rem
+  font:
+    size: 2rem
+    weight: bold
+  color: var(--placeholders)
+  @include setTransform(translateY(-100%))
+  @include setTransition(all .5s ease 0s)
+  cursor: text
+
+input
+  padding: .5rem 1rem
+  font:
+    size: 2rem
+  color: var(--black)
+  @include setBackground($color: var(--black))
+  @include setBorder(var(--black))
+  @include setTransition(all .15s ease 0s)
+
+div hr
+  width: 500px
+  @include setBorder(var(--white))

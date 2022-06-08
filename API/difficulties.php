@@ -3,8 +3,9 @@
   //header("Content-Type: text/plain");
 
   //BY Localhost
-  header("Access-Control-Allow-Origin: http://localhost");
+  // header("Access-Control-Allow-Origin: http://localhost");
   //General
+  header("Access-Control-Allow-Origin: *");
 
   include $_SERVER["DOCUMENT_ROOT"]."/DBD-API/definitions.php";
   include_once ROOT.CONTROLLERS."/Difficulties.php";

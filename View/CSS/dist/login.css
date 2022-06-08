@@ -104,7 +104,7 @@ h3 {
 
 header {
   position: sticky;
-  top: 0vh;
+  top: 1vh;
   z-index: 1;
 }
 
@@ -133,4 +133,71 @@ header {
   align-items: center;
   flex-flow: row nowrap;
   gap: 2rem;
+}
+
+main {
+  height: 100vh;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-image: url("./../../../Assets/IMG/bgLogin.jpg");
+}
+
+#login {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-flow: column nowrap;
+  gap: 4rem;
+  padding: 5rem 0;
+}
+
+#login div {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-flow: column nowrap;
+  gap: 1rem;
+}
+#login div:focus-within label {
+  top: 0;
+  color: var(--white);
+}
+#login div:focus-within input {
+  color: var(--white);
+  outline: 2px solid var(--mainColor);
+}
+
+label {
+  position: absolute;
+  top: 90%;
+  left: 1rem;
+  font-size: 2rem;
+  font-weight: bold;
+  color: var(--placeholders);
+  transform: translateY(-100%);
+  transition: all 0.5s ease 0s;
+  cursor: text;
+}
+
+input {
+  padding: 0.5rem 1rem;
+  font-size: 2rem;
+  color: var(--black);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-color: var(--black);
+  border-style: solid;
+  border-width: 2px;
+  border-color: var(--black);
+  transition: all 0.15s ease 0s;
+}
+
+div hr {
+  width: 500px;
+  border-style: solid;
+  border-width: 2px;
+  border-color: var(--white);
 }

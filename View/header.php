@@ -1,4 +1,23 @@
+<?php 
+require_once './templates/nav.php'; 
+$links = array(
+  "home"=>"", 
+  "killers"=>"./killers-characters/killer-main.php",
+  "survivors"=>"./survivors-characters/survivor-main.php", 
+  "perks"=>"#");
+if(!empty($_POST)) $_SESSION["admin"] = $_POST["admin"];
+
+if(isset($_SESSION["admin"]))
+  $links[$_SESSION["admin"]] = "./admin.php";
+else{
+  unset($_SESSION["admin"]);
+  $links["Login"] = "./login.php";
+}
+?>
 <header id="header">
+  <?php createNav($links);  ?>
+</header>
+<div class="bgImg">
   <section class="gameDesc">
     <h1 class="titleWhite">DEAD BY DAYLIGHT</h1>
     <div>
@@ -11,40 +30,24 @@
         <p>Tu objetivo es reparar 5 generadores, abrir la puerta de salida y evitar que el asesino de destruya ¿podrás escapar? </p>
       </div>
     </div>
-    <a href="https://deadbydaylight.com/" target="_blank" class="btn btnMain">SABER MÁS
-    </a>
+    <a href="https://deadbydaylight.com/" target="_blank" class="btn btnMain">SABER MÁS</a>
+    <section class="platforms">
+      <figure>
+        <img src="./../Assets/ICONS/SVG/steam.svg" alt="logoSteam">
+      </figure>
+      <figure>
+        <img src="./../Assets/ICONS/SVG/stadia.svg" alt="logoStadia">
+      </figure>
+      <figure>
+        <img src="./../Assets/ICONS/SVG/microsoft.svg" alt="logoMicrosoft">
+      </figure>
+      <figure>
+        <img src="./../Assets/ICONS/SVG/ps.svg" alt="logoPlayStation">
+      </figure>
+      <figure>
+        <img src="./../Assets/ICONS/SVG/xbox.svg" alt="logoXbox">
+      </figure>
+    </section>
   </section>
+</div>
 
-  <section class="navbar">
-    <figure>
-      <img src="https://us.v-cdn.net/6030815/uploads/editor/us/apbwthui3273.gif" class="logo" alt="logodbd">
-    </figure>
-    <nav>
-      <ul>
-        <li><a href="" class="btn btnNav">HOME</a></li>
-        <li><a href="" class="btn btnNav">KILLERS</a></li>
-        <li><a href="" class="btn btnNav">SURVIVORS</a></li>
-        <li><a href="" class="btn btnNav">PERKS</a></li>
-      </ul>
-    </nav>
-  </section>
-
-  <section class="platforms">
-    <figure>
-      <img src="./../Assets/ICONS/SVG/steam.svg" alt="logoSteam">
-    </figure>
-    <figure>
-      <img src="./../Assets/ICONS/SVG/stadia.svg" alt="logoStadia">
-    </figure>
-    <figure>
-      <img src="./../Assets/ICONS/SVG/microsoft.svg" alt="logoMicrosoft">
-    </figure>
-    <figure>
-      <img src="./../Assets/ICONS/SVG/ps.svg" alt="logoPlayStation">
-    </figure>
-    <figure>
-      <img src="./../Assets/ICONS/SVG/xbox.svg" alt="logoXbox">
-    </figure>
-  </section>
-
-</header>

@@ -9,7 +9,13 @@
   header("Access-Control-Allow-Headers: X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, Access-Control-Request-Method");
   header("Access-Control-Allow-Methods: GET, POST, OPTIONS, PUT, DELETE");  
 
-  include $_SERVER["DOCUMENT_ROOT"]."/DBD-API/definitions.php";
+  $file = $_SERVER["DOCUMENT_ROOT"];
+  $file = str_replace("\\","/",$file);
+
+  include (count(explode("/",$file)) < 4) ? 
+  $file."/DBD-API/definitions.php" :  
+  $file."/definitions.php";
+
   include_once ROOT.CONTROLLERS."/Asesinos.php";
   include_once ROOT.CLASES."/Autoloader.php";
   Autoloader::loader();

@@ -13,8 +13,8 @@
   --alpha:1;
   --main: 0,98%;
   --mainL: 28%;
-  --secondary: 291,28%;
-  --secondaryL:29%;
+  --secondary: 291,100%;
+  --secondaryL:30%;
   --third: 45,32%;
   --thirdL:77%;
   --mainColor: hsla(var(--main),var(--mainL),var(--alpha));
@@ -133,4 +133,45 @@ header {
   align-items: center;
   flex-flow: row nowrap;
   gap: 2rem;
+}
+
+header {
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-color: var(--mainColor);
+}
+
+main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-flow: row wrap;
+}
+
+.tabs {
+  flex: 1 1 20vw;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-flow: column nowrap;
+  border-style: solid;
+  border-width: 2px;
+  border-color: black;
+}
+
+.tab {
+  flex: 1 1 100%;
+  width: 100%;
+  font-size: 1.8rem;
+  cursor: pointer;
+}
+
+#dashboard {
+  flex: 1 1 70vw;
+  min-height: 100vh;
+  border-style: solid;
+  border-width: 2px;
+  border-color: blue;
 }

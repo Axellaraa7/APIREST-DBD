@@ -16,8 +16,8 @@
   --alpha:1
   --main: 0,98%
   --mainL: 28%
-  --secondary: 291,28%
-  --secondaryL:29%
+  --secondary: 291,100%
+  --secondaryL:30%
   --third: 45,32%
   --thirdL:77%
   --mainColor: hsla(var(--main),var(--mainL),var(--alpha))
@@ -27,6 +27,10 @@
   --placeholders:rgb(119,119,119)
   --black: #323232
   --white: #eeefff
+
+body
+  overflow-x: hidden
+  min-height: 300vh
 
 h1
   font-size: 2.8rem
@@ -39,9 +43,11 @@ h3
 
 .btn
   display: block
-  padding: 1.5rem 4.5rem
+  padding: 1rem 4rem
   font:
-    size: 2rem
+    size: 1.6rem
+    weight: bold
+  letter-spacing: 1px
   border:
     style: none
     radius: 25px
@@ -67,6 +73,8 @@ h3
 
 .btnNav
   @include setButtonStyle(hsla(0,0%,10%,.5),var(--white))
+  text:
+    transform: uppercase
   &:hover
     @include setButtonStyle(hsla(0,0%,90%,.5),var(--mainColor))
 

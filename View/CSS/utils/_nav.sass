@@ -1,0 +1,23 @@
+@import "./mixins"
+
+header
+  position: sticky
+  top: 0vh
+  z-index: 1
+
+.navbar
+  @include displayFlex($justify: space-between)
+  padding: 0 3vw
+  
+.navbar figure
+  @include setBounds(250px,150px) 
+
+.logo
+  @include setBounds(100%,100%)
+  // filter: contrast(200%)
+  filter: invert(85%)
+
+.navbar ul
+  @include displayFlex(center, center, row nowrap, 2rem)
+
+

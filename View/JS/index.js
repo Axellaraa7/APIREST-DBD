@@ -1,5 +1,7 @@
 import { HTTPGet, HTTPPost } from "./modules/HTTPMethods.js";
+import { dashboard } from "./modules/dashboard.js";
 import { getApiDatasToSelect } from "./modules/apiDatas.js";
+
 
 const d = document, w = window;
 
@@ -18,11 +20,14 @@ function inicio(){
     case "killer-main.php": 
       HTTPGet(apiKillers, callbackKiller);
       break;
+    case "admin.php":
+      console.log(currentUrl);
+      dashboard();
     // case "register.php":
     //   getApiDatasToSelect(d.getElementById("difficulty"),apiDifficulties);
     //   //getPerks();
     //   HTTPPost(d.getElementById("form"),apiKillers);
-    // break;
+      break;
     case "tets.php":
       d.querySelector("button").addEventListener("click",()=>{
         fetch(apiDifficulties).then(response => response.json()).then(data => console.log(data));

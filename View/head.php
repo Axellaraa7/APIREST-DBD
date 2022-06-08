@@ -7,6 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>DEAD BY DAYLIGHT</title>
   <?php
+  session_start();
   $scriptName = explode("/", $_SERVER["SCRIPT_NAME"]);
   $cont = count($scriptName) - 1;
   switch ($cont) {
