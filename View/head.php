@@ -8,23 +8,27 @@
   <title>DEAD BY DAYLIGHT</title>
   <?php
   session_start();
-  $scriptName = explode("/", $_SERVER["SCRIPT_NAME"]);
-  $cont = count($scriptName) - 1;
+  $scriptName = str_replace("\\","/",$_SERVER["SCRIPT_FILENAME"]);
+  $arrayRoot = explode("/", $scriptName);
+  $cont = count($arrayRoot) - 1;
   switch ($cont) {
-    case 1:
+    case 4:
       $path = './';
       break;
-    case 2:
+    case 5:
       $path = "./../";
       break;
-    case 3:
+    case 6:
       $path = "./../../";
+      break;
+    case 7:
+      $path = "./../../../";
       break;
     default:
       $path = "./";
       break;
   }
-  $file = substr(array_pop($scriptName), 0, -4);
+  $file = substr(array_pop($arrayRoot), 0, -4);
   echo "<link rel='stylesheet' href='".$path."VIEW/CSS/dist/$file.css'>";
   echo "<link rel='shortcut icon' href='".$path."Assets/ICONS/logoIcon.ico' type='image/x-icon'>";
   echo "<script src='".$path."VIEW/JS/index.js' type='module' defer></script>"
