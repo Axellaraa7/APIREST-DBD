@@ -13,15 +13,21 @@ $links = array(
 </header>
 <main>
   <aside class="tabs">
-    <button class="tab btnSecondary">REGISTER A KILLER</button>
-    <button class="tab btnSecondary">REGISTER A SURVIVOR</button>
-    <button class="tab btnSecondary">REGISTER A PERK</button>
-    <button class="tab btnSecondary">DELETE A KILLER</button>
-    <button class="tab btnSecondary">DELETE A SURVIVOR</button>
-    <button class="tab btnSecondary">DELETE A PERK</button>
-    <button class="tab btnSecondary">UPDATE A KILLER</button>
-    <button class="tab btnSecondary">UPDATE A SURVIVOR</button>
-    <button class="tab btnSecondary">UPDATE A PERK</button>
+    <div class="tabCol">
+      <button class="tab btnSecondary">UPLOAD A KILLER</button>
+      <button class="tab btnSecondary">UPLOAD A SURVIVOR</button>
+      <button class="tab btnSecondary">UPLOAD A PERK</button>  
+    </div>
+    <div class="tabCol">
+      <button class="tab btnSecondary">DELETE A KILLER</button>
+      <button class="tab btnSecondary">DELETE A SURVIVOR</button>
+      <button class="tab btnSecondary">DELETE A PERK</button>
+    </div>
+    <div class="tabCol">
+      <button class="tab btnSecondary">UPDATE A KILLER</button>
+      <button class="tab btnSecondary">UPDATE A SURVIVOR</button>
+      <button class="tab btnSecondary">UPDATE A PERK</button>
+    </div>
   </aside>
   <section id="dashboard">
 

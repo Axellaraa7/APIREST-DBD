@@ -4,24 +4,8 @@ header
   @include setBackground($color: var(--mainColor))
 
 main
-  @include displayFlex($flow: row wrap)
-
-.tabs
-  flex: 1 1 20vw
+  @include displayFlex($align: flex-start, $flow: row wrap)
   min-height: 100vh
-  @include displayFlex($flow: column nowrap)
-  @include setBorder(black)
 
-.tab
-  flex: 1 1 100%
-  width:100%
-  font:
-    size: 1.8rem
-  cursor: pointer
-
-#dashboard
-  flex: 1 1 70vw
-  min-height: 100vh
-  @include setBorder(blue)
-
+@import "./utils/navVertical"
 @import "./utils/dashboard"

@@ -7,7 +7,13 @@
   //General
   header("Access-Control-Allow-Origin: *");
 
-  include $_SERVER["DOCUMENT_ROOT"]."/DBD-API/definitions.php";
+  $file = $_SERVER["DOCUMENT_ROOT"];
+  $file = str_replace("\\","/",$file);
+
+  include (count(explode("/",$file)) < 4) ? 
+  $file."/DBD-API/definitions.php" :  
+  $file."/definitions.php";
+  
   include_once ROOT.CONTROLLERS."/Difficulties.php";
   include_once ROOT.CLASES."/Difficulty.php";
 
