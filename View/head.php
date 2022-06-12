@@ -31,9 +31,12 @@
   $file = substr(array_pop($arrayRoot), 0, -4);
   echo "<link rel='stylesheet' href='".$path."VIEW/CSS/dist/$file.css'>";
   echo "<link rel='shortcut icon' href='".$path."Assets/ICONS/logoIcon.ico' type='image/x-icon'>";
-  echo "<script src='".$path."VIEW/JS/index.js' type='module' defer></script>"
   ?>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
+  
+  <?php
+  echo "<script src='".$path."VIEW/JS/index.js' type='module' defer></script>"
+  ?>
 </head>
 
 <body>

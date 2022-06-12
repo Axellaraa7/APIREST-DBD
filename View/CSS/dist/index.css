@@ -1,7 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Special+Elite&display=swap");
-* {
-  font-size: 0.625rem;
-  font-family: "Special Elite", cursive;
+*, *::before, *::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -10,11 +8,13 @@
 }
 
 :root {
+  font-size: 0.625rem;
+  font-family: "Special Elite", cursive;
   --alpha:1;
   --main: 0,98%;
   --mainL: 28%;
-  --secondary: 291,28%;
-  --secondaryL:29%;
+  --secondary: 291,100%;
+  --secondaryL:30%;
   --third: 45,32%;
   --thirdL:77%;
   --mainColor: hsla(var(--main),var(--mainL),var(--alpha));
@@ -91,27 +91,27 @@ h3 {
 }
 
 .btnNav {
-  border: 2px solid rgba(26, 26, 26, 0.5);
-  background-color: rgba(26, 26, 26, 0.5);
+  border: 2px solid rgba(26, 26, 26, 0.7);
+  background-color: rgba(26, 26, 26, 0.7);
   color: var(--white);
   text-transform: uppercase;
 }
 .btnNav:hover {
-  border: 2px solid rgba(230, 230, 230, 0.5);
-  background-color: rgba(230, 230, 230, 0.5);
+  border: 2px solid rgba(230, 230, 230, 0.7);
+  background-color: rgba(230, 230, 230, 0.7);
   color: var(--mainColor);
 }
 
 header {
   position: sticky;
-  top: 0vh;
+  top: 0;
   z-index: 1;
 }
 
 .navbar {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: stretch;
   flex-flow: row wrap;
   padding: 0 3vw;
 }
@@ -127,12 +127,76 @@ header {
   filter: invert(85%);
 }
 
-.navbar ul {
+.navbar nav {
+  flex: 0 1 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-flow: row wrap;
+}
+
+.navbar .hamburguer {
+  display: none;
+}
+
+.menu {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-flow: row nowrap;
   gap: 2rem;
+}
+
+@media screen and (max-width: 1280px) {
+  .navbar .hamburguer {
+    display: block;
+  }
+
+  .hamburguer i {
+    font-size: 6.4rem;
+    color: var(--white);
+  }
+
+  .menu {
+    position: absolute;
+    width: 100%;
+    height: calc(100vh - 150px);
+    top: 100%;
+    right: 0;
+    display: flex;
+    justify-content: stretch;
+    align-items: stretch;
+    flex-flow: column;
+    gap: 0;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.5s ease 0s;
+  }
+
+  .navbar li {
+    flex: 1 1 100%;
+    display: flex;
+    justify-content: stretch;
+    align-items: stretch;
+    flex-flow: row wrap;
+  }
+
+  li a.btnNav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: row wrap;
+    width: 100%;
+    background-color: hsla(var(--main), var(--mainL), 0.7);
+    border-radius: 0;
+    font-size: 2.4rem;
+    letter-spacing: 0.25rem;
+  }
+}
+.visible {
+  visibility: visible;
+  opacity: 1;
+  z-index: 1;
 }
 
 .bgImg {

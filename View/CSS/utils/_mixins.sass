@@ -1,9 +1,9 @@
-@mixin displayFlex($justify:center, $align:center,$flow:row wrap,$gap: 0)
+@mixin displayFlex($justify:center, $align:center,$flow:row wrap,$gap: false)
   display: flex
   justify-content: $justify
   align-items: $align
   flex-flow: $flow
-  @if $gap != 0
+  @if $gap != false
     gap: $gap
   
 @mixin setBounds($width,$height)
@@ -41,3 +41,7 @@
 @mixin setTransform($transforms...)
   transform: join($transforms, null, space)
   //join($list1,$list2,$separator,$bracketed)
+
+@mixin fade($visibility,$opacity)
+  visibility: $visibility
+  opacity: $opacity

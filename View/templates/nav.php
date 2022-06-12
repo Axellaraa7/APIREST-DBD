@@ -1,6 +1,6 @@
 <?php
   function createNav($links){
-    $navbar = "<nav><ul>";
+    $navbar = "<nav ><div class='hamburguer'><i class='fa-solid fa-heart fa-beat'></i></div><ul class='menu'>";
     foreach($links as $message => $link){
       $navbar .= "<li><a href='$link' class='btn btnNav'>$message</a></li>";
     }

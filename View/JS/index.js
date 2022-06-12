@@ -2,7 +2,6 @@ import { HTTPGet, HTTPPost } from "./modules/HTTPMethods.js";
 import { dashboard } from "./modules/dashboard.js";
 import { getApiDatasToSelect } from "./modules/apiDatas.js";
 
-
 const d = document, w = window;
 
 const apiKillers = "http://127.0.0.1/DBD-API/API/killers.php", apiDifficulties = "http://127.0.0.1/DBD-API/API/difficulties.php", 
@@ -12,6 +11,12 @@ w.addEventListener("load",inicio,false);
 
 function inicio(){
   let currentUrl = location.pathname.split("/").pop();
+  d.addEventListener("click",(e)=>{
+    if(e.target.matches(".hamburguer i")){
+      d.querySelector(".hamburguer i").classList.toggle("fa-heart-crack");
+      d.querySelector(".menu").classList.toggle("visible");
+    }
+  })
   switch(currentUrl){
     case "":
     case "index.php":
@@ -29,9 +34,7 @@ function inicio(){
     //   HTTPPost(d.getElementById("form"),apiKillers);
       break;
     case "tets.php":
-      d.querySelector("button").addEventListener("click",()=>{
-        fetch(apiDifficulties).then(response => response.json()).then(data => console.log(data));
-      });
+      
     break;
   }
 }

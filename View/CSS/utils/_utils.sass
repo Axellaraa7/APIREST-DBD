@@ -2,17 +2,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Special+Elite&display=swap')
 
 *,*::before,*::after
-  font:
-    size:.625rem
-    family: "Special Elite", cursive
   box-sizing: border-box
   margin:0
   padding:0
-
   list-style: none
   text-decoration: none
 
 :root
+  font:
+    size: .625rem
+    family: "Special Elite", cursive
+  
   --alpha:1
   --main: 0,98%
   --mainL: 28%
@@ -27,6 +27,8 @@
   --placeholders:rgb(119,119,119)
   --black: #323232
   --white: #eeefff
+
+  
 
 body
   overflow-x: hidden
@@ -72,9 +74,9 @@ h3
     @include setButtonStyle(hsla(var(--third),65%,var(--alpha)),var(--black))
 
 .btnNav
-  @include setButtonStyle(hsla(0,0%,10%,.5),var(--white))
+  @include setButtonStyle(hsla(0,0%,10%,.7),var(--white))
   text:
     transform: uppercase
   &:hover
-    @include setButtonStyle(hsla(0,0%,90%,.5),var(--mainColor))
+    @include setButtonStyle(hsla(0,0%,90%,.7),var(--mainColor))
 

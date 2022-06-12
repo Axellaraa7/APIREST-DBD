@@ -2,23 +2,60 @@
 
 header
   position: sticky
-  top: 0vh
+  top: 0
   z-index: 1
 
 .navbar
-  @include displayFlex($justify: space-between)
+  @include displayFlex($justify: space-between, $align: stretch)
   padding: 0 3vw
   
 .navbar figure
   @include setBounds(250px,150px) 
-
+  
 .logo
   @include setBounds(100%,100%)
-  // filter: contrast(200%)
   filter: invert(85%)
 
-.navbar ul
-  @include displayFlex(center, center, row nowrap, 2rem)
+.navbar nav
+  flex: 0 1 auto
+  @include displayFlex()
 
+.navbar .hamburguer
+  display: none
 
+.menu
+  @include displayFlex($flow: row nowrap, $gap: 2rem)
+  
 @media screen and (max-width:1280px)
+  .navbar .hamburguer
+    display: block
+
+  .hamburguer i
+    font:
+      size: 6.4rem
+    color: var(--white)
+
+  .menu
+    position: absolute
+    @include setBounds(100%,calc(100vh - 150px))
+    top: 100%
+    right:0
+    @include displayFlex(stretch, stretch, column, 0)
+    @include fade(hidden,0)
+    @include setTransition(opacity .5s ease 0s)
+  
+  .navbar li
+    flex: 1 1 100%
+    @include displayFlex($justify: stretch, $align: stretch)
+  
+  li a.btnNav
+    @include displayFlex()
+    width: 100%
+    background-color: hsla(var(--main),var(--mainL),.7)
+    border-radius: 0
+    font-size: 2.4rem
+    letter-spacing: .25rem
+
+.visible
+  @include fade(visible,1)
+  z-index: 1

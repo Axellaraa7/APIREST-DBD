@@ -1,11 +1,27 @@
 <?php 
-require_once("header.php");
+require_once("head.php");
+require_once("./templates/nav.php");
 
-include_once $_SERVER["DOCUMENT_ROOT"]."/DBD-API/definitions.php";
-include_once ROOT.SQL."/DB.php";
-include_once ROOT.CLASES."/Asesino.php";
-include_once ROOT.CONTROLLERS."/Asesinos.php";
+// include_once $_SERVER["DOCUMENT_ROOT"]."/definitions.php";
+// include_once ROOT.SQL."/DB.php";
+// include_once ROOT.CLASES."/Asesino.php";
+// include_once ROOT.CONTROLLERS."/Asesinos.php";
 
+$links = array(
+  "home"=>"", 
+  "killers"=>"./killers-characters/killer-main.php",
+  "survivors"=>"./survivors-characters/survivor-main.php", 
+  "perks"=>"#",
+  "link1"=>"#",
+);
+?>
+<header>
+  <?php
+  createNav($links);
+  ?>
+</header>
+
+<?php
 // $asesino = new Asesino();
 //HTMLESPCIAL
 //$nurse = htmlspecialchars(trim(ucfirst("nurseL'ore")),ENT_QUOTES);
@@ -45,7 +61,3 @@ include_once ROOT.CONTROLLERS."/Asesinos.php";
 // echo "<br><br>";
 // $index = array_search()
 ?>
-
-<main id="main" style="font-size: 2rem;">
-  <button class="btn btnMain"> Obtener dificultades </button>
-</main>

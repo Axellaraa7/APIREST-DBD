@@ -1,5 +1,5 @@
 <?php
-require_once "./../header.php";
+require_once "./../head.php";
 ?>
 <main>
   <form id="form">
@@ -10,7 +10,7 @@ require_once "./../header.php";
     <div class="formElement ">
       <input type="text" id="name" name="name" >
       <label for="name" class="ph">
-        <span class="fa-solid fa-biohazard"></span>
+        <span class="fa-regular fa-heart fa-5x fa-bounce"></span>
         Name
       </label>
     </div>
